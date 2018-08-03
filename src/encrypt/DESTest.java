@@ -1,3 +1,5 @@
+package encrypt;
+
 import java.security.SecureRandom;
 
 import javax.crypto.Cipher;
