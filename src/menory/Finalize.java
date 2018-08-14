@@ -23,24 +23,28 @@ class Finalize {
 
         while (true);
     }
+    static class A {
+        static A mine;
+        private static int n = 0;
+        @Override
+        protected void finalize() throws Throwable {
+            super.finalize();
+            System.out.println("finalize执行:" + ++n);
+            mine = this;
+        }
+    }
+
+    static class B {
+        @Override
+        protected void finalize() throws Throwable {
+            System.out.println("finalize执行:" + Thread.currentThread().getName());
+            Thread.sleep(5000);
+            System.out.println("finalize执行OK");
+        }
+    }
+
 }
 
-class A {
-    static A mine;
-    private static int n = 0;
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-        System.out.println("finalize执行:" + ++n);
-        mine = this;
-    }
-}
 
-class B {
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("finalize执行:" + Thread.currentThread().getName());
-        Thread.sleep(5000);
-        System.out.println("finalize执行OK");
-    }
-}
+
+
