@@ -29,5 +29,20 @@ public class Counter {
 
         //这里每次运行的值都有可能不同,可能为1000
         System.out.println("运行结果:Counter.count=" + Counter.count);
+
+        String s1 = "Aloha";
+        char[] s2 = {'H','e','l','l','o'};
+        change(s1,s2);
+
+    }
+
+    private static void change(String s1, char[] s2){
+        s1 = "world";
+        s2[0] = 'X';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
